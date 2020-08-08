@@ -15,6 +15,16 @@ yarn serve
 yarn build
 ```
 
+### create example.vue file
+```
+yarn new:example
+```
+
+### create component file
+```
+yarn new:comp
+```
+
 ### Lints and fixes files
 ```
 yarn lint
