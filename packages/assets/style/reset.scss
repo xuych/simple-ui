@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+
+input {
+  -webkit-appearance: none; // 去除苹果input阴影
+}
+:focus {
+  outline: 0;
+}
+
+li,
+ol {
+  list-style: none;
+}
+
+button,
+input {
+  font: inherit;
+  outline: none;
+  border: none;
+}
