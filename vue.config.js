@@ -1,12 +1,12 @@
-const path = require("path");
+const path = require('path')
 // const HtmlWebpackPlugin = require("html-webpack-plugin");
-const resolve = dir => {
-  return path.join(__dirname, dir);
-};
+const resolve = (dir) => {
+  return path.join(__dirname, dir)
+}
 
 const devConfig = {
   configureWebpack: {
-    entry: "./examples/main",
+    entry: './examples/main',
     // plugins: [
     //   new HtmlWebpackPlugin({
     //     inject: true,
@@ -15,30 +15,29 @@ const devConfig = {
     //   })
     // ]
   },
-  chainWebpack: config => {
-    config.plugins.delete("prefetch");
-    config.resolve.alias.set("main", resolve("src"));
+  chainWebpack: (config) => {
+    config.plugins.delete('prefetch')
+    config.resolve.alias.set('main', resolve('src'))
   },
-  outputDir: "example/dist"
-};
+  outputDir: 'example/dist',
+}
 
 const buildConfig = {
   css: {
     sourceMap: true,
-    extract: false
+    extract: false,
   },
   configureWebpack: {
     output: {
-      filename: "simple-ui.min.js",
-      library: "simple-ui",
-      libraryTarget: "umd",
-      umdNamedDefine: true
-    }
+      filename: 'simple-ui.min.js',
+      library: 'simple-ui',
+      libraryTarget: 'umd',
+      umdNamedDefine: true,
+    },
   },
   filenameHashing: false,
-  outputDir: "lib",
-  productionSourceMap: false
-};
+  outputDir: 'lib',
+  productionSourceMap: false,
+}
 
-module.exports =
-  process.env.NODE_ENV === "production" ? buildConfig : devConfig;
+module.exports = process.env.NODE_ENV === 'production' ? buildConfig : devConfig

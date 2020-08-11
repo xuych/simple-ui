@@ -1,5 +1,5 @@
 module.exports = {
-  vueTemplate: compoenntName => {
+  vueTemplate: (compoenntName) => {
     return `<template>
  <div class="${compoenntName}">
  ${compoenntName}组件
@@ -15,12 +15,12 @@ export default {
 };
 </style>`
   },
-  entryTemplate: compoenntName => {
+  entryTemplate: (compoenntName) => {
     return `import ${compoenntName} from './${compoenntName}.vue'
 export default [{
  path: "/${compoenntName}",
  name: "${compoenntName}",
  component: ${compoenntName}
 }]`
-  }
+  },
 }

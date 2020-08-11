@@ -2,14 +2,11 @@ const chalk = require('chalk')
 const path = require('path')
 const fs = require('fs')
 const resolve = (...file) => path.resolve(__dirname, ...file)
-const log = message => console.log(chalk.green(`${message}`))
-const successLog = message => console.log(chalk.blue(`${message}`))
-const errorLog = error => console.log(chalk.red(`${error}`))
+const log = (message) => console.log(chalk.green(`${message}`))
+const successLog = (message) => console.log(chalk.blue(`${message}`))
+const errorLog = (error) => console.log(chalk.red(`${error}`))
 // 导入模板
-const {
-  vueTemplate,
-  entryTemplate
-} = require('./template')
+const { vueTemplate, entryTemplate } = require('./template')
 // 生成文件
 const generateFile = (path, data) => {
   if (fs.existsSync(path)) {
@@ -17,7 +14,7 @@ const generateFile = (path, data) => {
     return
   }
   return new Promise((resolve, reject) => {
-    fs.writeFile(path, data, 'utf8', err => {
+    fs.writeFile(path, data, 'utf8', (err) => {
       if (err) {
         errorLog(err.message)
         reject(err)
@@ -29,10 +26,12 @@ const generateFile = (path, data) => {
 }
 log('请输入要生成的页面组件名称、会生成在 packages/目录下')
 let componentName = ''
-process.stdin.on('data', async chunk => {
+process.stdin.on('data', async (chunk) => {
   // 获取组件名
   // 组件名称
-  let inputName = String(chunk).trim().toString()
+  let inputName = String(chunk)
+    .trim()
+    .toString()
   if (inputName.includes('/')) {
     const inputArr = inputName.split('/')
     componentName = inputArr[inputArr.length - 1]

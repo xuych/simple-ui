@@ -2,9 +2,9 @@ const chalk = require('chalk')
 const path = require('path')
 const fs = require('fs')
 const resolve = (...file) => path.resolve(__dirname, ...file)
-const log = message => console.log(chalk.green(`${message}`))
-const successLog = message => console.log(chalk.blue(`${message}`))
-const errorLog = error => console.log(chalk.red(`${error}`))
+const log = (message) => console.log(chalk.green(`${message}`))
+const successLog = (message) => console.log(chalk.blue(`${message}`))
+const errorLog = (error) => console.log(chalk.red(`${error}`))
 const { vueTemplate } = require('./template')
 
 const generateFile = (path, data) => {
@@ -13,7 +13,7 @@ const generateFile = (path, data) => {
     return
   }
   return new Promise((resolve, reject) => {
-    fs.writeFile(path, data, 'utf8', err => {
+    fs.writeFile(path, data, 'utf8', (err) => {
       if (err) {
         errorLog(err.message)
         reject(err)
@@ -24,20 +24,20 @@ const generateFile = (path, data) => {
   })
 }
 // 递归创建目录
-function MyMkdir (directory, callback) {
+function MyMkdir(directory, callback) {
   const exists = fs.existsSync(directory)
   if (exists) {
     callback()
   } else {
-    MyMkdir(path.dirname(directory), function () {
+    MyMkdir(path.dirname(directory), function() {
       fs.mkdirSync(directory)
       callback()
     })
   }
 }
-function dotExistDirectoryCreate (directory) {
+function dotExistDirectoryCreate(directory) {
   return new Promise((resolve) => {
-    MyMkdir(directory, function () {
+    MyMkdir(directory, function() {
       resolve(true)
     })
   })
@@ -45,8 +45,10 @@ function dotExistDirectoryCreate (directory) {
 
 log('请输入要生成的页面组件名称、会生成在 examples/目录下')
 let componentName = ''
-process.stdin.on('data', async chunk => {
-  const inputName = String(chunk).trim().toString()
+process.stdin.on('data', async (chunk) => {
+  const inputName = String(chunk)
+    .trim()
+    .toString()
   /**
    * Vue页面组件路径
    */
