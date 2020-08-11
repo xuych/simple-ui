@@ -15,3 +15,6 @@
     name: 'Home',
   }
 </script>
+<style lang="scss">
+  @import '@/assets/style/reset.scss';
+</style>

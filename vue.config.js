@@ -7,21 +7,22 @@ const resolve = (dir) => {
 const devConfig = {
   configureWebpack: {
     entry: './examples/main',
-    // plugins: [
-    //   new HtmlWebpackPlugin({
-    //     inject: true,
-    //     filename: resolve("examples/dist/index.html"),
-    //     template: resolve("examples/index.html")
-    //   })
-    // ]
   },
   chainWebpack: (config) => {
-    config.plugins.delete('prefetch')
-    config.resolve.alias.set('main', resolve('src'))
+    config.resolve.alias.set('@', resolve('packages'))
+    config.resolve.alias.set('_@', resolve('examples'))
   },
-  outputDir: 'example/dist',
+  // outputDir: 'example/dist',
+  css: {
+    loaderOptions: {
+      // sass: {
+      //   prependData: `
+      // @import "@/assets/style/reset.scss";
+      // `,
+      // },
+    },
+  },
 }
-
 const buildConfig = {
   css: {
     sourceMap: true,
