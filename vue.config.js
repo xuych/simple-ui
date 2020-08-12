@@ -10,16 +10,16 @@ const devConfig = {
   },
   chainWebpack: (config) => {
     config.resolve.alias.set('@', resolve('packages'))
-    config.resolve.alias.set('_@', resolve('examples'))
+    config.resolve.alias.set('~', resolve('examples'))
   },
   // outputDir: 'example/dist',
   css: {
     loaderOptions: {
-      // sass: {
-      //   prependData: `
-      // @import "@/assets/style/reset.scss";
-      // `,
-      // },
+      sass: {
+        prependData: `
+      @import "@/assets/style/common.scss";
+      `,
+      },
     },
   },
 }

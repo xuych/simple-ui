@@ -10,7 +10,7 @@ module.exports = {
    name: '${compoenntName}'
   };
   </script>
-  <style lang="stylus" scoped>
+  <style lang="scss" scoped>
   .${compoenntName} {
   };
   </style>`

@@ -1,0 +1,10 @@
+$primary: #1aac19;
+$disabled: #c3c5ce;
+$gray-border: 1px solid #ddd;
+$gray: #f2f2f2;
+@mixin active-has-color {
+  filter: brightness(60%);
+}
+@mixin active-no-color {
+  background-color: $gray;
+}

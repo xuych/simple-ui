@@ -1,26 +1,25 @@
 module.exports = {
   vueTemplate: (compoenntName) => {
     return `<template>
- <div class="${compoenntName}">
+ <div class="sim-${compoenntName}">
  ${compoenntName}组件
  </div>
 </template>
 <script>
 export default {
- name: '${compoenntName}'
+ name: 'sim${compoenntName}'
 };
 </script>
-<style lang="stylus" scoped>
-.${compoenntName} {
+<style lang="scss" scoped>
+.sim-${compoenntName} {
 };
 </style>`
   },
   entryTemplate: (compoenntName) => {
-    return `import ${compoenntName} from './${compoenntName}.vue'
-export default [{
- path: "/${compoenntName}",
- name: "${compoenntName}",
- component: ${compoenntName}
-}]`
+    return `import sim${compoenntName} from './${compoenntName}.vue'
+    sim${compoenntName}.install = function(Vue) {
+      Vue.component(sim${compoenntName}.name, sim${compoenntName})
+    }
+    export default sim${compoenntName}`
   },
 }
