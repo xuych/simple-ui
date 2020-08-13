@@ -27,8 +27,7 @@
   </div>
 </template>
 <script>
-  let CONFIRM_TEXT = '确定'
-  let CANCEL_TEXT = '取消'
+  import { CANCEL_TEXT, CONFIRM_TEXT } from '@/data/data'
   export default {
     name: 'simDialog',
     props: {
@@ -70,6 +69,7 @@
         closeOnPressEscape: false,
         onCancel: null,
         onConfirm: null,
+        duration: null,
       }
     },
     methods: {

@@ -3,8 +3,7 @@
 import simButton from './Button'
 import simDialog from './Dialog'
 import simMasker from './Masker'
-
-const components = [simButton, simDialog, simMasker]
+const components = [simButton, simMasker]
 
 const install = function(Vue) {
   components.forEach((component) => {
@@ -24,6 +23,5 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   install,
   simButton,
-  simDialog,
   simMasker,
 }

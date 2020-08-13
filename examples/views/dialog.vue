@@ -1,7 +1,4 @@
 <template>
-  <!-- <sim-dialog custom @cancel="cancel">
-    666
-  </sim-dialog> -->
   <div>
     <sim-button @click="open">open</sim-button>
     <sim-button @click="cutom">custom</sim-button>
@@ -10,6 +7,9 @@
 <script>
   export default {
     name: 'Dialog',
+    beforeDestroy() {
+      this.$Dialog.close()
+    },
     methods: {
       open() {
         this.$Dialog({
@@ -18,6 +18,7 @@
           closeOnClickModal: false,
           closeOnPressEscape: true,
           showCancelBtn: true,
+          duration: 3000,
           onConfirm: () => {
             console.log('ok')
           },
@@ -29,13 +30,8 @@
       cutom() {
         this.$Dialog({
           bareDialog: true,
+          closeOnClickModal: true,
         })
-        // TODO: 弹窗默认展示n秒后自动关闭的实现
-        this.$nextTick(
-          setTimeout(() => {
-            this.$Dialog.close()
-          }, 3000),
-        )
       },
     },
   }

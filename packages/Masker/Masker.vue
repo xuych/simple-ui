@@ -1,11 +1,14 @@
 <template>
-  <transition name="sim-msaker-bounce">
-    <div class="sim-masker-box">
-      <div class="sim-masker" :class="{ 'sim-masker-fullscreen': fullscreen }" :style="style">
-        <slot></slot>
+  <div class="container">
+    <transition name="sim-msaker-bounce">
+      <div class="sim-masker-box" v-show="visiable">
+        <div class="sim-masker" @click="close" :class="{ 'sim-masker-fullscreen': fullscreen }" :style="style"></div>
       </div>
+    </transition>
+    <div v-show="visiable" class="slot">
+      <slot></slot>
     </div>
-  </transition>
+  </div>
 </template>
 <script>
   import { toRGB } from '@/utils/util'
@@ -23,6 +26,34 @@
       fullscreen: {
         type: Boolean,
         default: false,
+      },
+      closeOnClickModal: {
+        type: Boolean,
+        default: true,
+      },
+      value: {
+        type: Boolean,
+        default: undefined,
+      },
+    },
+    data() {
+      return {
+        visiable: this.value,
+      }
+    },
+    watch: {
+      visiable(val) {
+        this.$emit('input', val)
+      },
+      value(val) {
+        this.visiable = val
+      },
+    },
+    methods: {
+      close() {
+        if (this.closeOnClickModal) {
+          this.$emit('input', false)
+        }
       },
     },
     computed: {
@@ -47,8 +78,11 @@
     opacity: 0;
     transform: translate3d(-50%, -50%, 0) scale(0.9);
   }
-  .sim-masker-box {
+  .container {
     position: relative;
+    z-index: 1001;
+  }
+  .sim-masker-box {
     .sim-masker {
       position: absolute;
       top: 0;
@@ -59,7 +93,12 @@
     }
     .sim-masker-fullscreen {
       position: fixed;
-      z-index: 10001;
     }
+  }
+  .slot {
+    transform: translate3d(-50%, -50%, 0);
+    top: 50%;
+    left: 50%;
+    position: absolute;
   }
 </style>

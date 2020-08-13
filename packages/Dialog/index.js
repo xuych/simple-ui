@@ -5,26 +5,59 @@
 
 import Vue from 'vue'
 import simDialog from './Dialog.vue'
-
+import { CANCEL_TEXT, CONFIRM_TEXT } from '@/data/data'
+const settings = {
+  value: true,
+  title: '',
+  message: '',
+  type: '',
+  bareDialog: false,
+  showInput: false,
+  inputValue: null,
+  inputPlaceholder: '',
+  inputPattern: null,
+  inputValidator: null,
+  inputErrorMessage: '',
+  showConfirmBtn: true,
+  showCancelBtn: false,
+  confirmButtonText: CONFIRM_TEXT,
+  cancelButtonText: CANCEL_TEXT,
+  confirmButtonClass: '',
+  confirmButtonDisabled: false,
+  cancelButtonClass: '',
+  editorErrorMessage: null,
+  closeOnClickModal: false,
+  closeOnPressEscape: false,
+  onCancel: null,
+  onConfirm: null,
+  duration: null,
+}
+console.log(CANCEL_TEXT, CONFIRM_TEXT, settings)
 const content = Vue.extend(simDialog)
 let instance
-let constructor = (options = {}) => {
+let constructor = (opts = {}) => {
   if (!instance) {
     // instance = new content({
     //   el: document.createElement('div'),
     // })
     instance = new content().$mount()
   }
+  let options = Object.assign({}, settings, opts)
   for (const key in options) {
     instance[key] = options[key]
   }
   instance.value = true
   document.body.appendChild(instance.$el)
+  if (instance.duration && instance.duration > 0) {
+    setTimeout(() => {
+      instance.value = false
+    }, instance.duration)
+  }
   if (instance.closeOnClickModal) {
-    setTimeout(function() {
+    setTimeout(() => {
       instance.$el.children[0].addEventListener(
         'click',
-        function() {
+        () => {
           instance.value = false
         },
         0,
