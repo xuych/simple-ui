@@ -3,8 +3,8 @@
 import simButton from './Button'
 import simDialog from './Dialog'
 import simMasker from './Masker'
+import Indicator from './Indicator'
 const components = [simButton, simMasker]
-
 const install = function(Vue) {
   components.forEach((component) => {
     Vue.component(component.name, component)
@@ -13,13 +13,13 @@ const install = function(Vue) {
     }
   })
   Vue.$Dialog = Vue.prototype.$Dialog = simDialog
+  Vue.$Indicator = Vue.prototype.$Indicator = Indicator
 }
 
 /* istanbul ignore if */
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
-
 export default {
   install,
   simButton,

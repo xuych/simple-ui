@@ -3,7 +3,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home'
-
 Vue.use(VueRouter)
 
 const routes = [
@@ -23,6 +22,10 @@ const routes = [
   {
     path: '/masker',
     component: (resolve) => require(['../views/masker.vue'], resolve),
+  },
+  {
+    path: '/indicator',
+    component: (resolve) => require(['../views/indicator.vue'], resolve),
   },
 ]
 

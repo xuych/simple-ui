@@ -8,3 +8,10 @@ $gray: #f2f2f2;
 @mixin active-no-color {
   background-color: $gray;
 }
+.container-fade-enter, .container-fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+.container-fade-enter-active,
+.container-fade-leave-active {
+  transition: opacity 0.2s linear;
+}

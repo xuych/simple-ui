@@ -6,6 +6,7 @@
         <li><router-link to="/button">Button</router-link></li>
         <li><router-link to="/dialog">dialog</router-link></li>
         <li><router-link to="/masker">masker</router-link></li>
+        <li><router-link to="/indicator">indicator</router-link></li>
       </ul>
     </nav>
   </div>

@@ -16,10 +16,21 @@ export default {
 </style>`
   },
   entryTemplate: (compoenntName) => {
-    return `import sim${compoenntName} from './${compoenntName}.vue'
-    sim${compoenntName}.install = function(Vue) {
-      Vue.component(sim${compoenntName}.name, sim${compoenntName})
+    return `import ${compoenntName} from './${compoenntName}.vue'
+    import Vue from 'vue'
+    const content = Vue.extend(${compoenntName})
+    let instance
+    const settings = {}
+    let constructor = (opts) => {
+      console.log(opts)
+      if (!instance) {
+        instance = new content().$mount()
+      }
+      let options = Object.assign({}, settings, opts)
+      for (const key in options) {
+        instance[key] = options[key]
+      }
     }
-    export default sim${compoenntName}`
+    export default constructor`
   },
 }
