@@ -13,24 +13,27 @@ const routes = [
   },
   {
     path: '/button',
-    component: (resolve) => require(['../views/button.vue'], resolve),
+    name: 'button',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/button.vue'),
   },
   {
     path: '/dialog',
-    component: (resolve) => require(['../views/dialog.vue'], resolve),
+    name: 'dialog',
+    component: () => import(/* webpackChunkName: "about" */ '../views/dialog.vue'),
   },
   {
     path: '/masker',
-    component: (resolve) => require(['../views/masker.vue'], resolve),
+    name: 'masker',
+    component: () => import(/* webpackChunkName: "about" */ '../views/masker.vue'),
   },
   {
     path: '/indicator',
-    component: (resolve) => require(['../views/indicator.vue'], resolve),
+    name: 'indicator',
+    component: () => import(/* webpackChunkName: "about" */ '../views/indicator.vue'),
   },
 ]
 
-const router = new VueRouter({
-  mode: 'history',
-  routes,
-})
-export default router
+export default routes

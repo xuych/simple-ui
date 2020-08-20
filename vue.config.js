@@ -1,12 +1,24 @@
 const path = require('path')
+const { name } = require('./package')
 // const HtmlWebpackPlugin = require("html-webpack-plugin");
 const resolve = (dir) => {
   return path.join(__dirname, dir)
 }
 
 const devConfig = {
+  devServer: {
+    port: 3333,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+  },
   configureWebpack: {
     entry: './examples/main',
+    output: {
+      library: `${name}-[name]`,
+      libraryTarget: 'umd', // 把子应用打包成 umd 库格式
+      jsonpFunction: `webpackJsonp_${name}`,
+    },
   },
   chainWebpack: (config) => {
     config.resolve.alias.set('@', resolve('packages'))
@@ -28,17 +40,6 @@ const buildConfig = {
     sourceMap: true,
     extract: false,
   },
-  configureWebpack: {
-    output: {
-      filename: 'simple-ui.min.js',
-      library: 'simple-ui',
-      libraryTarget: 'umd',
-      umdNamedDefine: true,
-    },
-  },
-  filenameHashing: false,
-  outputDir: 'lib',
-  productionSourceMap: false,
 }
-
+console.log(process.env.NODE_ENV)
 module.exports = process.env.NODE_ENV === 'production' ? buildConfig : devConfig

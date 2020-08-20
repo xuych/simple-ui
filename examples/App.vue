@@ -10,7 +10,7 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import '@/assets/style/reset.scss';
   @import '@/assets/style/common.scss';
   #app {
