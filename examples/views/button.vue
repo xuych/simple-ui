@@ -7,11 +7,19 @@
   export default {
     name: 'example-button',
     data() {
-      return {}
+      return {
+        isQiankun: window.__POWERED_BY_QIANKUN__,
+      }
+    },
+    created() {
+      console.log(this.$root.parentVuex)
     },
     methods: {
-      hdlClick(e) {
-        console.log(e)
+      hdlClick() {
+        if (this.isQiankun) {
+          this.$root.parentVuex.commit('setCommonData', { parent: 2 })
+          // this.$root.parentRouter.push('/simple-ui/#/button')
+        }
       },
     },
   }

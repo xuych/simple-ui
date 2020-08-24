@@ -2,6 +2,7 @@ import './public-path'
 import Vue from 'vue'
 import App from './App.vue'
 import routes from './router'
+import store from './store'
 import uilib from '../packages/index'
 import VueRouter from 'vue-router'
 
@@ -11,9 +12,10 @@ Vue.config.productionTip = false
 let router = null
 let instance = null
 
-function render() {
+function render(parent = {}) {
   router = new VueRouter({
     routes,
+    store,
   })
   instance = new Vue({
     router,
