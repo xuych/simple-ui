@@ -35,11 +35,12 @@ const devConfig = {
     },
   },
 }
-const buildConfig = {
-  css: {
-    sourceMap: true,
-    extract: false,
-  },
-}
-console.log(process.env.NODE_ENV)
-module.exports = process.env.NODE_ENV === 'production' ? buildConfig : devConfig
+// const buildConfig = {
+//   css: {
+//     sourceMap: true,
+//     extract: false,
+//   },
+// }
+// console.log(process.env.NODE_ENV)
+// module.exports = process.env.NODE_ENV === 'production' ? buildConfig : devConfig
+module.exports = devConfig
