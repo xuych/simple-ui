@@ -1,9 +1,15 @@
 <template>
-  <anchored-heading :level="1">Hello world!</anchored-heading>
+  <anchored-heading :level="level">Hello world!</anchored-heading>
 </template>
 
 <script>
-  export default {}
+  export default {
+    data() {
+      return {
+        level: 2,
+      }
+    },
+  }
 </script>
 
 <style></style>
