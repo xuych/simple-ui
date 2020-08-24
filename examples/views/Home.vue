@@ -3,10 +3,9 @@
   <div class="home">
     <nav>
       <ul>
-        <li><router-link to="/button">Button</router-link></li>
-        <li><router-link to="/dialog">dialog</router-link></li>
-        <li><router-link to="/masker">masker</router-link></li>
-        <li><router-link to="/indicator">indicator</router-link></li>
+        <li v-for="(e, i) in links" :key="'e' + i">
+          <router-link :to="`/${e}`">{{ e }}</router-link>
+        </li>
       </ul>
     </nav>
   </div>
@@ -15,6 +14,11 @@
 <script>
   export default {
     name: 'Home',
+    data() {
+      return {
+        links: ['button', 'dialog', 'masker', 'indicator', 'title'],
+      }
+    },
   }
 </script>
 <style lang="scss" scoped></style>

@@ -4,7 +4,10 @@ import simButton from './Button'
 import simDialog from './Dialog'
 import simMasker from './Masker'
 import Indicator from './Indicator'
-const components = [simButton, simMasker]
+import anchoredHeading from './jsx/title.jsx'
+console.log(simButton)
+console.log(anchoredHeading)
+const components = [simButton, simMasker, anchoredHeading]
 const install = function(Vue) {
   components.forEach((component) => {
     Vue.component(component.name, component)
@@ -22,6 +25,4 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 export default {
   install,
-  simButton,
-  simMasker,
 }

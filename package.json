@@ -10,6 +10,8 @@
     "new:example": "node ./scripts/generateExample/index"
   },
   "dependencies": {
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
     "core-js": "^3.6.5",
     "qiankun": "^2.0.21",
     "vue": "^2.6.11",

@@ -4,11 +4,11 @@ module.exports = {
   tabs: false,
   semi: false,
   singleQuote: true,
-  quoteProps: "as-needed",
-  trailingComma: "all",
+  quoteProps: 'as-needed',
+  trailingComma: 'all',
   bracketSpacing: true,
   jsxBracketSameLine: true,
-  arrowParens: "always",
-  htmlWhitespaceSensitivity: "ignore",
+  arrowParens: 'always',
+  htmlWhitespaceSensitivity: 'ignore',
   vueIndentScriptAndStyle: true,
-};
+}
