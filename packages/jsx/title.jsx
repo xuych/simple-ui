@@ -23,7 +23,8 @@ export default {
       required: true,
     },
   },
-  render() {
+  render(h) {
+    console.log(h)
     let tagName = 'h' + this.level
     return <tagName>{this.$slots.default}</tagName>
   },

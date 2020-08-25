@@ -14,6 +14,10 @@
       type: {
         type: String,
         default: 'primary',
+        required: false,
+        validator: function(value) {
+          return value ? ['primary', 'plain'].indexOf(value) !== -1 : true
+        },
       },
     },
     methods: {
