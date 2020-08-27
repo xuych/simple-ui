@@ -20,12 +20,17 @@ export default {
   props: {
     level: {
       type: Number,
-      required: true,
+      default: 1,
     },
+    text:{
+      type:String,
+      default:'',
+    }
   },
   render(h) {
     console.log(h)
     let tagName = 'h' + this.level
-    return <tagName>{this.$slots.default}</tagName>
+    // return <tagName>{this.$slots.default}</tagName>
+    return <tagName>{this.text}</tagName>
   },
 }
