@@ -15,7 +15,7 @@ let constructor = (opts) => {
   for (const key in options) {
     instance[key] = options[key]
   }
-  document.body.appendChild(instance.$el)
+  document.getElementById('app').appendChild(instance.$el)
 }
 constructor.close = () => {
   setTimeout(() => {
@@ -23,3 +23,8 @@ constructor.close = () => {
   }, 0)
 }
 export default constructor
+// export default {
+//   install: (Vue) => {
+//     Vue.prototype.$Title = constructor
+//   },
+// }

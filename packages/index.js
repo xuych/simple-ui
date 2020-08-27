@@ -5,8 +5,7 @@ import simDialog from './Dialog'
 import simMasker from './Masker'
 import Indicator from './Indicator'
 import anchoredHeading from './jsx/title.jsx'
-import simTitle from './jsx/title.js'
-console.log(simTitle)
+import '@/core/lazy_use'
 console.log(simButton)
 console.log(anchoredHeading)
 const components = [simButton, simMasker, anchoredHeading]
@@ -19,9 +18,8 @@ const install = function(Vue) {
   })
   Vue.$Dialog = Vue.prototype.$Dialog = simDialog
   Vue.$Indicator = Vue.prototype.$Indicator = Indicator
-  Vue.$Title = Vue.prototype.$Title = simTitle
+  // Vue.$Title = Vue.prototype.$Title = simTitle
 }
-
 /* istanbul ignore if */
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)

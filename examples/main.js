@@ -3,11 +3,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import routes from './router'
 import store from './store'
-import uilib from '../packages/index'
+import uiLib from '../packages/index'
 import VueRouter from 'vue-router'
-
+console.log(uiLib)
 /* eslint-disable */
-Vue.use(uilib)
+Vue.use(uiLib)
 Vue.config.productionTip = false
 let router = null
 let instance = null
